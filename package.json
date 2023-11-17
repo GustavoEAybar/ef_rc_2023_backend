@@ -4,7 +4,8 @@
   "description": "REST API entrega final - rolling code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx babel-node src/index.js",
+    "dev": "nodemon --exec npx babel-node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/GustavoEAybar/ef_rc_2023_backend/issues"
   },
-  "homepage": "https://github.com/GustavoEAybar/ef_rc_2023_backend#readme"
+  "homepage": "https://github.com/GustavoEAybar/ef_rc_2023_backend#readme",
+  "dependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.23.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
 }
