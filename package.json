@@ -1,0 +1,23 @@
+{
+  "name": "ef_rc_2023_backend",
+  "version": "1.0.0",
+  "description": "REST API entrega final - rolling code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoEAybar/ef_rc_2023_backend.git"
+  },
+  "keywords": [
+    "REST",
+    "API"
+  ],
+  "author": "Gustavo Exequiel Aybar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoEAybar/ef_rc_2023_backend/issues"
+  },
+  "homepage": "https://github.com/GustavoEAybar/ef_rc_2023_backend#readme"
+}
