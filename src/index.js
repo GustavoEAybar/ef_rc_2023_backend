@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 import './database';
+import router from './routes/products.routes';
 
 const app = express();
 app.set('port', process.env.PORT || 4001)
@@ -18,6 +19,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public/index.html')));
 
-app.get('/',(req,res)=>{
-    res.send('Esto es una prueba de un get desde mi backend')
-})
+app.use('/apex-v1', router);
