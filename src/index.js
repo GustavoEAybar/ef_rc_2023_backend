@@ -4,6 +4,7 @@ import cors from 'cors';
 import path from 'path';
 import './database';
 import router from './routes/products.routes';
+import 'dotenv/config';
 
 const app = express();
 app.set('port', process.env.PORT || 4001)
