@@ -42,6 +42,7 @@ export const getOne = async (req, res) => {
     res.status(404).json({ message: "error when requesting product" });
   }
 };
+
 export const editProduct = async (req, res) => {
   const { id } = req.params;
   try {
@@ -51,6 +52,7 @@ export const editProduct = async (req, res) => {
     res.status(404).json({ message: "error when editing product" });
   }
 };
+
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
   try {
@@ -60,6 +62,7 @@ export const updateProduct = async (req, res) => {
     res.status(404).json({ message: "error updating product" });
   }
 };
+
 export const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
