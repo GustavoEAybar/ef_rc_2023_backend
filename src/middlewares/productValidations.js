@@ -1,7 +1,7 @@
 import { check } from "express-validator";
 import { validationsResults } from "../helper/validationsResults";
 
-export const productValidate = [
+const productValidate = [
   check("nameProduct")
     .notEmpty()
     .withMessage("Product name is required")
@@ -49,3 +49,5 @@ export const productValidate = [
     validationsResults(req, res, next);
   },
 ];
+
+export default productValidate;

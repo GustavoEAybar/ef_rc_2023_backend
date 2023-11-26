@@ -8,19 +8,20 @@ import {
   updateProduct,
 } from "../controllers/products.controllers";
 import { productValidate } from "../middlewares/productValidations";
+import validateJWT from "../middlewares/validateJWT";
 
 const router = Router();
 
 router
   .route("/products")
   .get(showProducts)
-  .post([productValidate],createProduct);
+  .post([validateJWT, productValidate], createProduct);
 
 router
   .route("/products/:id")
   .get(getOne)
-  .patch([productValidate], editProduct)
-  .put([productValidate], updateProduct)
+  .patch([validateJWT, productValidate], editProduct)
+  .put([validateJWT, productValidate], updateProduct)
   .delete(deleteProduct);
 
 export default router;

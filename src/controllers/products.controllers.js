@@ -1,7 +1,7 @@
 import Product from "../models/product";
 
 //PARA TODOS LOS PRODUCTOS
-export const showProducts = async (req, res) => {
+const showProducts = async (req, res) => {
   try {
     const productList = await Product.find();
     res.status(200).json(productList);
@@ -10,7 +10,7 @@ export const showProducts = async (req, res) => {
   }
 };
 
-export const createProduct = async (req, res) => {
+const createProduct = async (req, res) => {
   const { nameProduct, type, price, image, category, description, stock } =
     req.body;
 
@@ -33,7 +33,7 @@ export const createProduct = async (req, res) => {
 };
 
 // PARA UN SOLO PRODUCTO
-export const getOne = async (req, res) => {
+const getOne = async (req, res) => {
   const { id } = req.params;
   try {
     const oneProduct = await Product.findById(id);
@@ -43,7 +43,7 @@ export const getOne = async (req, res) => {
   }
 };
 
-export const editProduct = async (req, res) => {
+const editProduct = async (req, res) => {
   const { id } = req.params;
   try {
     await Product.findByIdAndUpdate(id, req.body);
@@ -53,7 +53,7 @@ export const editProduct = async (req, res) => {
   }
 };
 
-export const updateProduct = async (req, res) => {
+const updateProduct = async (req, res) => {
   const { id } = req.params;
   try {
     await Product.findByIdAndUpdate(id, req.body);
@@ -63,7 +63,7 @@ export const updateProduct = async (req, res) => {
   }
 };
 
-export const deleteProduct = async (req, res) => {
+const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
     await Product.findByIdAndDelete(id);
@@ -71,4 +71,13 @@ export const deleteProduct = async (req, res) => {
   } catch {
     res.status(404).json({ message: "error when deleting product" });
   }
+};
+
+export default {
+  showProducts,
+  createProduct,
+  getOne,
+  editProduct,
+  updateProduct,
+  deleteProduct,
 };
