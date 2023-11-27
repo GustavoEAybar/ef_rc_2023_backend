@@ -82,11 +82,11 @@ const deleteService = async (req, res) => {
   }
 };
 
-export default {
+export {
   showServices,
   createService,
   getOne,
   editService,
   updateService,
-  deleteService,
+  deleteService
 };

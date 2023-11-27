@@ -7,7 +7,7 @@ import {
   editProduct,
   deleteProduct,
 } from "../controllers/products.controllers";
-import { productValidations } from "../middlewares/productValidations";
+import productValidations from "../middlewares/productValidations";
 import validateJWT from "../middlewares/validateJWT";
 
 const products = Router();

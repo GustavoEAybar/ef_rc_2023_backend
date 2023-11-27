@@ -1,5 +1,5 @@
 import { check } from "express-validator";
-import { validationsResults } from "../helper/validationsResults";
+import validationsResults from "../helper/validationsResults";
 
 const productValidations = [
   check("nameProduct")

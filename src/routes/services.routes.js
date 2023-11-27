@@ -1,27 +1,26 @@
 import { Router } from "express";
-import {
+import { 
   showServices,
-  getOne,
   createService,
-  updateService,
+  getOne,
   editService,
-  deleteService,
-} from "../controllers/services.controllers";
-import { serviceValidation } from "../middlewares/serviceValidations";
+  updateService,
+  deleteService } from "../controllers/services.controllers";
+import serviceValidation from "../middlewares/serviceValidations";
 import validateJWT from "../middlewares/validateJWT";
 
 const services = Router();
 
 services
-  .route("/")
+  .route("/services")
   .get(showServices)
-  .post([validateJWT, serviceValidation], createService);
+  .post([validateJWT, serviceValidation], createService)
 
 services
-  .route("/:id")
+  .route("/services/:id")
   .get(getOne)
   .put([validateJWT, serviceValidation], updateService)
   .patch([validateJWT, serviceValidation], editService)
-  .delete(deleteService);
+  .delete(deleteService)
 
 export default services;
