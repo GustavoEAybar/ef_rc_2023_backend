@@ -16,14 +16,16 @@ const serviceSchema = new Schema({
   },
 
   date: {
-    type: Date,
-    default: Date.now(),
+    type: String,
+    minlenght: 5,
+    maxlenght: 50,
     required: true,
   },
 
   time: {
-    type: Date,
-    default: Date.now(),
+    type: String,
+    minlenght: 5,
+    maxlenght: 50,
     required: true,
   },
 

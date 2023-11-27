@@ -12,12 +12,12 @@ import validateJWT from "../middlewares/validateJWT";
 const services = Router();
 
 services
-  .route("/services")
+  .route("/")
   .get(showServices)
   .post([validateJWT, serviceValidation], createService)
 
 services
-  .route("/services/:id")
+  .route("/:id")
   .get(getOne)
   .put([validateJWT, serviceValidation], updateService)
   .patch([validateJWT, serviceValidation], editService)

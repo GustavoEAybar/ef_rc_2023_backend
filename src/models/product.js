@@ -8,6 +8,7 @@ const productSchema = new Schema({
     unique: true,
     required: true,
   },
+  
 
   image: {
     type: String,
@@ -30,14 +31,13 @@ const productSchema = new Schema({
   
   size: {
     type: String,
-    minlenght: 1,
+    minlenght: 0,
     maxlenght: 50,
-    
   },
 
   weight: {
     type: Number,
-    minlenght: 2,
+    minlenght: 0,
     maxlenght: 5,
     min: 0,
     max: 10000,

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 const validateJwt = (req, res, next) => {
-  const token = ewq.header("x-access-token");
+  const token = req.header("x-access-token");
   if (!token) {
     res.status(401).json({ message: "Need to send a token in the request" });
   }

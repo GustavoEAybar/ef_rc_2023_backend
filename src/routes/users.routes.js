@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { login, register } from "../controllers/users.controllers";
-import userValidate from "../middlewares/userValidations";
+import { loginValidate, userValidate } from "../middlewares/userValidations"
 
 const users = Router();
 
-users.route("/login").post([userValidate], login);
+users.route("/login").post([loginValidate], login);
 
 users.route("/register").post([userValidate], register);
 

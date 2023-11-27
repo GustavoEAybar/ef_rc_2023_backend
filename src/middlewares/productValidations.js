@@ -8,6 +8,7 @@ const productValidations = [
     .isLength({ min: 4, max: 100 })
     .withMessage("Product name must be between 4 to 100 characters"),
 
+
   check("image")
     .notEmpty()
     .withMessage("Product image is required")
@@ -27,15 +28,11 @@ const productValidations = [
     .withMessage("Product type must be between 1 to 50 characters"),
 
   check("size")
-    .notEmpty()
-    .withMessage("Product size is required")
-    .isLength({ min: 1, max: 50 })
+    .isLength({ min: 0, max: 50 })
     .withMessage("Product size must be between 1 to 50 characters"),
 
   check("weight")
-    .notEmpty()
-    .withMessage("Product weight is required")
-    .isLength({ min: 2, max: 5 })
+    .isLength({ min: 0, max: 5 })
     .withMessage("Product weight must be between 2 to 5 characters"),
     check("weight").custom((value) => {
       if (value >= 0 && value <= 10000) {

@@ -1,5 +1,5 @@
 import { check } from "express-validator";
-import { validationsResults } from "../helper/validationsResults";
+import validationsResults from "../helper/validationsResults";
 
 const serviceValidations = [
   check("nameService")
@@ -14,9 +14,11 @@ const serviceValidations = [
     .isLength({ min: 7, max: 50 })
     .withMessage("Teacher name must be between 7 to 50 characters"),
 
-  check("date").notEmpty().withMessage("Service date is required"),
+  check("date")
+  .notEmpty().withMessage("Service date is required"),
 
-  check("time").notEmpty().withMessage("Service time is required"),
+  check("time")
+  .notEmpty().withMessage("Service time is required"),
 
   check("image")
     .notEmpty()
@@ -24,7 +26,7 @@ const serviceValidations = [
     .isLength({ min: 1, max: 200 })
     .withMessage("Service image must be between 1 to 200 characters"),
 
-  check("planeType")
+  check("planType")
     .notEmpty()
     .withMessage("Service planeType is required")
     .isLength({ min: 4, max: 50 })

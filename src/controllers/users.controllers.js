@@ -15,10 +15,10 @@ const login = async (req, res) => {
       res
         .status(404)
         .json({ message: "User email or password incorrect - password" });
-    const token = await generateJWT(user._id, user.name);
+    const token = await generateJWT(user._id, user.nameUser);
     res.status(200).json({
       message: "User email and password correct",
-      userName: user.name,
+      userName: user.nameUser,
       uid: user._id,
       token,
     });

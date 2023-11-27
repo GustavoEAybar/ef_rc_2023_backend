@@ -1,5 +1,23 @@
 import { check } from "express-validator";
-import { validationsResults } from "../helper/validationsResults";
+import validationsResults from "../helper/validationsResults";
+
+const loginValidate = [
+  check("email")
+    .notEmpty()
+    .withMessage("Email is required")
+    .isLength({ min: 12, max: 100 })
+    .withMessage("Email must be between 12 to 100 characters"),
+
+  check("password")
+    .notEmpty()
+    .withMessage("Password is required")
+    .isLength({ min: 8 })
+    .withMessage("Password must have at least 8 characters"),
+
+  (req, res, next) => {
+    validationsResults(req, res, next);
+  },
+];
 
 const userValidate = [
   check("nameUser")
@@ -49,4 +67,4 @@ const userValidate = [
   },
 ];
 
-export default userValidate;
+export { userValidate, loginValidate };
