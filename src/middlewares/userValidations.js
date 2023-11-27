@@ -1,24 +1,52 @@
 import { check } from "express-validator";
 import { validationsResults } from "../helper/validationsResults";
 
-const productValidate = [
+const userValidate = [
   check("nameUser")
     .notEmpty()
     .withMessage("User name is required")
-    .isLength({ min: 1, max: 50 })
-    .withMessage("User name must be between 1 to 50 characters"),
+    .isLength({ min: 3, max: 50 })
+    .withMessage("User name must be between 3 to 50 characters"),
 
-  check("email", "User type is required")
+  check("lastNameUser")
     .notEmpty()
-    .withMessage()
-    .isLength({ min: 1, max: 50 })
-    .withMessage("User type must be between 1 to 50 characters"),
+    .withMessage("User name is required")
+    .isLength({ min: 3, max: 50 })
+    .withMessage("User name must be between 3 to 50 characters"),
 
-  check("password").notEmpty().withMessage("User price is required"),
+  check("email")
+    .notEmpty()
+    .withMessage("Email is required")
+    .isLength({ min: 12, max: 100 })
+    .withMessage("Email must be between 12 to 100 characters"),
+
+  check("phone")
+    .notEmpty()
+    .withMessage("Phone number is required")
+    .isLength({ min: 7, max: 20 })
+    .withMessage("Phone number must be between 7 to 20 characters"),
+
+  check("password")
+    .notEmpty()
+    .withMessage("Password is required")
+    .isLength({ min: 8 })
+    .withMessage("Password must have at least 8 characters"),
+
+  check("contractedPlan")
+    .notEmpty()
+    .withMessage("The plan cntracted is required")
+    .isLength({ min: 4, max: 100 })
+    .withMessage("The plan cntracted must be between 4 to 100 characters"),
+
+  check("roll")
+    .notEmpty()
+    .withMessage("Roll is required")
+    .isLength({ min: 7, max: 20 })
+    .withMessage("Roll must be between 7 to 20 characters"),
 
   (req, res, next) => {
     validationsResults(req, res, next);
   },
 ];
 
-export default productValidate;
+export default userValidate;

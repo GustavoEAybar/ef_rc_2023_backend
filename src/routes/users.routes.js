@@ -1,11 +1,11 @@
 import { Router } from "express";
 import { login, register } from "../controllers/users.controllers";
-import { productValidate } from "../middlewares/userValidations";
+import { userValidate } from "../middlewares/userValidations";
 
-const valid = Router();
+const users = Router();
 
-valid.route("/login").post([productValidate], login);
+users.route("/login").post([userValidate], login);
 
-valid.route("/register").post([productValidate], register);
+users.route("/register").post([userValidate], register);
 
-export default valid;
+export default users;

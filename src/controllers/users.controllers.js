@@ -38,11 +38,11 @@ const register = async (req, res) => {
     const SALT_ROUND = 10;
     createUser.password = await bcrypt.hash(password, SALT_ROUND);
 
-    const token = await generateJWT(createUser._id, createUser.name);
+    const token = await generateJWT(createUser._id, createUser.nameUser);
     await createUser.save();
     res.status(200).json({
       message: "User created",
-      userName: createUser.name,
+      userName: createUser.nameUser,
       uid: createUser._id,
       token,
     });

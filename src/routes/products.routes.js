@@ -1,27 +1,27 @@
 import { Router } from "express";
 import {
-  createProduct,
-  deleteProduct,
-  editProduct,
-  getOne,
   showProducts,
+  getOne,
+  createProduct,
   updateProduct,
+  editProduct,
+  deleteProduct,
 } from "../controllers/products.controllers";
-import { productValidate } from "../middlewares/productValidations";
+import { productValidations } from "../middlewares/productValidations";
 import validateJWT from "../middlewares/validateJWT";
 
-const router = Router();
+const products = Router();
 
-router
-  .route("/products")
+products
+  .route("/")
   .get(showProducts)
-  .post([validateJWT, productValidate], createProduct);
+  .post([validateJWT, productValidations], createProduct);
 
-router
-  .route("/products/:id")
+products
+  .route("/:id")
   .get(getOne)
-  .patch([validateJWT, productValidate], editProduct)
-  .put([validateJWT, productValidate], updateProduct)
+  .put([validateJWT, productValidations], updateProduct)
+  .patch([validateJWT, productValidations], editProduct)
   .delete(deleteProduct);
 
-export default router;
+export default products;

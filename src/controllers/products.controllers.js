@@ -11,18 +11,29 @@ const showProducts = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { nameProduct, type, price, image, category, description, stock } =
-    req.body;
+  const {
+    nameProduct,
+    image,
+    category,
+    type,
+    size,
+    weight,
+    description,
+    stock,
+    price,
+  } = req.body;
 
   try {
     const newProduct = new Product({
       nameProduct,
-      type,
-      price,
       image,
       category,
+      type,
+      size,
+      weight,
       description,
       stock,
+      price,
     });
 
     await newProduct.save();
