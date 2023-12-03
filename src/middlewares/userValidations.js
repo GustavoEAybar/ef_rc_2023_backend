@@ -50,11 +50,11 @@ const userValidate = [
     .isLength({ min: 8 })
     .withMessage("Password must have at least 8 characters"),
 
-  check("contractedPlan")
-    .notEmpty()
-    .withMessage("The plan cntracted is required")
-    .isLength({ min: 4, max: 100 })
-    .withMessage("The plan cntracted must be between 4 to 100 characters"),
+  // check("contractedPlan")
+  //   .notEmpty()
+  //   .withMessage("The plan contracted is required")
+  //   .isLength({ min: 4, max: 100 })
+  //   .withMessage("The plan contracted must be between 4 to 100 characters"),
 
   check("roll")
     .notEmpty()
