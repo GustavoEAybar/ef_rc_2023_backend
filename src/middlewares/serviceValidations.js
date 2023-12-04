@@ -5,7 +5,7 @@ const serviceValidations = [
   check("nameService")
     .notEmpty()
     .withMessage("Service name is required")
-    .isLength({ min: 5, max: 50 })
+    .isLength({ min: 1, max: 50 })
     .withMessage("Service name must be between 5 to 50 characters"),
 
   check("nameTeacher")

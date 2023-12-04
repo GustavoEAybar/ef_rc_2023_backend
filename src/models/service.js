@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const serviceSchema = new Schema({
   nameService: {
     type: String,
-    minlenght: 5,
+    minlenght: 1,
     maxlenght: 50,
     required: true,
   },
