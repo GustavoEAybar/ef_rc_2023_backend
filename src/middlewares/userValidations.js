@@ -20,6 +20,24 @@ const loginValidate = [
 ];
 
 const userValidate = [
+  check("image")
+  .notEmpty()
+  .withMessage("Service image is required")
+  .isLength({ min: 1, max: 200 })
+  .withMessage("Service image must be between 1 to 200 characters"),
+  
+  check("roll")
+    .notEmpty()
+    .withMessage("Roll is required")
+    .isLength({ min: 7, max: 20 })
+    .withMessage("Roll must be between 7 to 20 characters"),
+  
+    check("classes")
+    .notEmpty()
+    .withMessage("The plan contracted is required")
+    .isLength({ min: 4, max: 100 })
+    .withMessage("The plan contracted must be between 4 to 100 characters"),
+
   check("nameUser")
     .notEmpty()
     .withMessage("User name is required")
@@ -50,17 +68,11 @@ const userValidate = [
     .isLength({ min: 8 })
     .withMessage("Password must have at least 8 characters"),
 
-  // check("contractedPlan")
-  //   .notEmpty()
-  //   .withMessage("The plan contracted is required")
-  //   .isLength({ min: 4, max: 100 })
-  //   .withMessage("The plan contracted must be between 4 to 100 characters"),
-
-  check("roll")
+  check("contractedPlan")
     .notEmpty()
-    .withMessage("Roll is required")
-    .isLength({ min: 7, max: 20 })
-    .withMessage("Roll must be between 7 to 20 characters"),
+    .withMessage("The plan contracted is required")
+    .isLength({ min: 4, max: 100 })
+    .withMessage("The plan contracted must be between 4 to 100 characters"),
 
   (req, res, next) => {
     validationsResults(req, res, next);

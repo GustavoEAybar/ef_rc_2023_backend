@@ -9,21 +9,21 @@ const serviceSchema = new Schema({
   },
 
   nameTeacher: {
-    type: String,
+    type: [String],
     minlenght: 7,
     maxlenght: 50,
     required: true,
   },
 
   date: {
-    type: String,
+    type: [String],
     minlenght: 5,
     maxlenght: 50,
     required: true,
   },
 
   time: {
-    type: String,
+    type: [String],
     minlenght: 5,
     maxlenght: 50,
     required: true,

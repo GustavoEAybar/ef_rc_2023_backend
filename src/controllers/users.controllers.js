@@ -1,6 +1,7 @@
 import User from "../models/user";
 import bcrypt from "bcryptjs";
 import generateJWT from "../helper/generateJWT";
+import { STATUS } from '../constants/index'
 
 const login = async (req, res) => {
   try {
@@ -8,22 +9,22 @@ const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user)
       res
-        .status(404)
+        .status(STATUS.NOT_FOUND)
         .json({ message: "User email or password incorrect - email" });
     const correctPassword = bcrypt.compareSync(password, user.password);
     if (!correctPassword)
       res
-        .status(404)
+        .status(STATUS.NOT_FOUND)
         .json({ message: "User email or password incorrect - password" });
     const token = await generateJWT(user._id, user.nameUser);
-    res.status(200).json({
+    res.status(STATUS.OK).json({
       message: "User email and password correct",
       userName: user.nameUser,
       uid: user._id,
       token,
     });
   } catch {
-    res.status(400).json({ message: "User login in failed" });
+    res.status(STATUS.BAD_REQUEST).json({ message: "User login in failed" });
   }
 };
 
@@ -31,7 +32,7 @@ const register = async (req, res) => {
   try {
     const { email, password } = req.body;
     const userFound = await User.findOne({ email });
-    if (userFound) res.status(400).json({ message: "User already exists" });
+    if (userFound) res.status(STATUS.BAD_REQUEST).json({ message: "User already exists" });
 
     let createUser = new User(req.body);
     await createUser.save();
@@ -40,15 +41,72 @@ const register = async (req, res) => {
 
     const token = await generateJWT(createUser._id, createUser.nameUser);
     await createUser.save();
-    res.status(200).json({
+    res.status(STATUS.OK).json({
       message: "User created",
       userName: createUser.nameUser,
       uid: createUser._id,
       token,
     });
   } catch {
-    res.status(404).json({ message: "User registration failed" });
+    res.status(STATUS.NOT_FOUND).json({ message: "User registration failed" });
   }
 };
 
-export { login, register };
+const showUsers = async (req, res) => {
+  try {
+    const userList = await User.find();
+    res.status(STATUS.OK).json(userList);
+  } catch {
+    res.status(STATUS.NOT_FOUND).json({ message: "error loading User" });
+  }
+};
+
+const getOne = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const oneUser = await User.findById(id);
+    res.status(STATUS.OK).json(oneUser);
+  } catch {
+    res.status(STATUS.NOT_FOUND).json({ message: "error when requesting service" });
+  }
+};
+
+const editUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await User.findByIdAndUpdate(id, req.body);
+    res.status(STATUS.OK).json({ message: "edit User"});
+  } catch {
+    res.status(STATUS.NOT_FOUND).json({ message: "errro when editing user"});    
+  }
+};
+
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await User.findByIdAndUpdate(id, req.body);
+    res.status(STATUS.OK).json({ message: "User updated"});
+  } catch {
+    res.status(STATUS.NOT_FOUND).json({ message: "error updating user" });
+  }
+};
+
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await User.findOneAndDelete(id);
+    res.status(STATUS.OK).json({ message: 'removes User'});
+  } catch {
+    res.status(STATUS.NOT_FOUND).json({ message: 'error when deleting User'});
+  }
+};
+
+export {
+  showUsers,
+  register,
+  login,
+  getOne,
+  editUser,
+  updateUser,
+  deleteUser
+ };

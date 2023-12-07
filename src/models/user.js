@@ -1,6 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 
 const userSchema = new Schema({
+  image:{
+    type: String,
+    minlenght: 1,
+    maxlenght: 200,
+    required: true,
+  },
+
   nameUser: {
     type: String,
     minlenght: 3,
@@ -36,16 +43,24 @@ const userSchema = new Schema({
     required: true,
   },
 
+  classes:{
+    type: [String],
+    minlenght: 4,
+    required: true,
+  },
+
   contractedPlan: {
-    type: String,
+    type: [String],
     minlenght: 4,
     maxlenght: 100,
+    requiresd: true,
   },
 
   roll: {
     type: String,
     minlenght: 7,
     maxlenght: 20,
+    default: 'usuario',
     required: true,
   },
 });
