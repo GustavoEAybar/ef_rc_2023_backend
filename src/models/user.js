@@ -50,17 +50,16 @@ const userSchema = new Schema({
   },
 
   contractedPlan: {
-    type: [String],
+    type: String,
     minlenght: 4,
     maxlenght: 100,
-    requiresd: true,
+    required: true,
   },
 
   roll: {
     type: String,
     minlenght: 7,
     maxlenght: 20,
-    default: 'usuario',
     required: true,
   },
 });
