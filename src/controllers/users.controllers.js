@@ -29,6 +29,7 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
+  console.log('desde el controlador de registros');
   try {
     const { email, password } = req.body;
     const userFound = await User.findOne({ email });

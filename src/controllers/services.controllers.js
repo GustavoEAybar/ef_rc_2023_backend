@@ -12,6 +12,7 @@ const showServices = async (req, res) => {
 };
 
 const createService = async (req, res) => {
+  console.log('desde crear servicio');
   const {
     nameService,
     nameTeacher,

@@ -6,9 +6,7 @@ const validateJwt = (req, res, next) => {
     res.status(401).json({ message: "Need to send a token in the request" });
   }
   try {
-    const payload = jwt.verify(token, process.env.SECRET_JWT);
-    // req.id = payload.uid;
-    // req.name = payload.userName;
+    jwt.verify(token, process.env.SECRET_JWT);
   } catch {
     res
       .status(401)
