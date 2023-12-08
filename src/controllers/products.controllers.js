@@ -1,7 +1,6 @@
 import Product from "../models/product";
 import { STATUS } from '../constants/index'
 
-//PARA TODOS LOS PRODUCTOS
 const showProducts = async (req, res) => {
   try {
     const productList = await Product.find();
@@ -12,7 +11,6 @@ const showProducts = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  console.log('desde crear producto');
   const {
     nameProduct,
     image,
@@ -45,7 +43,6 @@ const createProduct = async (req, res) => {
   }
 };
 
-// PARA UN SOLO PRODUCTO
 const getOne = async (req, res) => {
   const { id } = req.params;
   try {

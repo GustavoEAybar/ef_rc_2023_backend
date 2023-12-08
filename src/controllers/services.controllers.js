@@ -1,7 +1,6 @@
 import Service from "../models/service";
 import { STATUS } from '../constants/index'
 
-//PARA TODOS LOS SERVICIOS
 const showServices = async (req, res) => {
   try {
     const servicesList = await Service.find();
@@ -12,7 +11,6 @@ const showServices = async (req, res) => {
 };
 
 const createService = async (req, res) => {
-  console.log('desde crear servicio');
   const {
     nameService,
     nameTeacher,

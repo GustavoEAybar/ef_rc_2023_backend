@@ -11,9 +11,9 @@ import "dotenv/config"
 const app = express();
 app.set("port", process.env.PORT || 4001);
 app.listen(app.get("port"), () => {
-  console.log("=================================");
+  console.log("==================================");
   console.log("servidor escuchando en puerto " + app.get("port"));
-  console.log("=================================");
+  console.log("==================================");
 });
 
 app.use(morgan("dev"));

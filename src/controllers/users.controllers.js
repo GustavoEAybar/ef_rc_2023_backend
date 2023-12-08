@@ -17,37 +17,27 @@ const login = async (req, res) => {
         .status(STATUS.NOT_FOUND)
         .json({ message: "User email or password incorrect - password" });
     const token = await generateJWT(user._id, user.nameUser);
-    res.status(STATUS.OK).json({
-      message: "User email and password correct",
-      userName: user.nameUser,
-      uid: user._id,
-      token,
-    });
+    res.status(STATUS.OK).json({ message: "User email and password correct" });
   } catch {
     res.status(STATUS.BAD_REQUEST).json({ message: "User login in failed" });
   }
 };
 
 const register = async (req, res) => {
-  console.log('desde el controlador de registros');
   try {
     const { email, password } = req.body;
     const userFound = await User.findOne({ email });
     if (userFound) res.status(STATUS.BAD_REQUEST).json({ message: "User already exists" });
 
     let createUser = new User(req.body);
+    
     await createUser.save();
     const SALT_ROUND = 10;
     createUser.password = await bcrypt.hash(password, SALT_ROUND);
 
     const token = await generateJWT(createUser._id, createUser.nameUser);
     await createUser.save();
-    res.status(STATUS.OK).json({
-      message: "User created",
-      userName: createUser.nameUser,
-      uid: createUser._id,
-      token,
-    });
+    res.status(STATUS.OK).json({ message: "User created"  });
   } catch {
     res.status(STATUS.NOT_FOUND).json({ message: "User registration failed" });
   }
