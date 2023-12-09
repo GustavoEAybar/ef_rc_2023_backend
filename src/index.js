@@ -20,7 +20,7 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "../public/index.html")));
+app.use(express.static(path.join(__dirname, "/index.html")));
 
 
 app.use("/apex-v1/services", services);
