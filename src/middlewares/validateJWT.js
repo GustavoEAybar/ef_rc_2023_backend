@@ -1,9 +1,11 @@
 import jwt from "jsonwebtoken";
+import { STATUS } from "../constants";
 
 const validateJwt = (req, res, next) => {
   const token = req.header("x-access-token");
+  
   if (!token) {
-    res.status(401).json({ message: "Need to send a token in the request" });
+    res.status(STATUS.UNAUTHORIZED).json({ message: `Need to send a token in the request ${token}`});
   }
   try {
     jwt.verify(token, process.env.SECRET_JWT);
