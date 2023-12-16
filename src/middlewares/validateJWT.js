@@ -3,7 +3,6 @@ import { STATUS } from "../constants";
 
 const validateJwt = (req, res, next) => {
   const token = req.header("x-access-token");
-  
   if (!token) {
     res.status(STATUS.UNAUTHORIZED).json({ message: `Need to send a token in the request ${token}`});
   }

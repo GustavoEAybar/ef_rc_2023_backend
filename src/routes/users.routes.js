@@ -32,7 +32,7 @@ users
   .route("/:id")
   .get(getOne)
   .put([validateJWT, userValidate], updateUser)
-  .patch([userValidate, ], editUser)
+  .patch([userValidate ], editUser)
   .delete([validateJWT], deleteUser);
 
   

@@ -18,10 +18,7 @@ const login = async (req, res) => {
         .json({ message: "User email or password incorrect - password" });
     const token = await generateJWT(user._id, user.nameUser);
     res.status(STATUS.OK).json({
-      message: "User email and password correct",
-      userName: user.nameUser,
-      uid: user._id,
-      token
+      token,
     });
   } catch {
     res.status(STATUS.BAD_REQUEST).json({ message: "User login in failed" });
@@ -81,7 +78,7 @@ const editUser = async (req, res) => {
   try {
     const newUser = await User.findByIdAndUpdate(id, req.body);
     const SALT_ROUND = 10;
-    newUser.password = await bcrypt.hash(req.body.password, SALT_ROUND)
+    newUser.password = await bcrypt.hash(req.body.password, SALT_ROUND);
     await newUser.save();
     res.status(STATUS.OK).json({ message: "edit User" });
   } catch {
@@ -92,15 +89,21 @@ const editUser = async (req, res) => {
 const updateUser = async (req, res) => {
   const { id } = req.params;
   try {
-    await User.findByIdAndUpdate(id, req.body);
+    const newUser = await User.findByIdAndUpdate(id, req.body);
+    const newPassword = await req.body.password
+    const SALT_ROUND = 10;
+    newUser.password = await bcrypt.hash(newPassword, SALT_ROUND);
+    await newUser.save();
+
     res.status(STATUS.OK).json({ message: "User updated" });
-  } catch {
+  } catch (error){
+    console.log(error);
     res.status(STATUS.NOT_FOUND).json({ message: "error updating user" });
   }
 };
 
 const deleteUser = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; 
   try {
     await User.findOneAndDelete(id);
     res.status(STATUS.OK).json({ message: "removes User" });
