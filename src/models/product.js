@@ -36,7 +36,7 @@ const productSchema = new Schema({
   },
 
   weight: {
-    type: Number,
+    type: String,
     minlenght: 0,
     maxlenght: 5,
     min: 0,

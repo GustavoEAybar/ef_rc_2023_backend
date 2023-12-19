@@ -34,7 +34,7 @@ const userValidate = [
 
   check("lastnameUser")
     .notEmpty()
-    .withMessage("User name is required")
+    .withMessage("User lastname is required")
     .isLength({ min: 3, max: 50 })
     .withMessage("User name must be between 3 to 50 characters"),
 

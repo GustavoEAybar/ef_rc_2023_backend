@@ -15,7 +15,7 @@ const userSchema = new Schema({
     required: true,
   },
 
-  lastNameUser: {
+  lastnameUser: {
     type: String,
     minlenght: 3,
     maxlenght: 50,
